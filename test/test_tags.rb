@@ -198,4 +198,20 @@ CONTENT
       assert_match %r{/2008/11/21/complex/}, @result
     end
   end
+
+context "simple page with archives" do
+    setup do
+      content = <<CONTENT
+---
+title: Post linking
+---
+
+{% archives site.posts %}
+CONTENT
+      create_post(content, {'permalink' => 'pretty', 'source' => source_dir, 'destination' => dest_dir, 'read_posts' => true})
+    end
+    
+    puts @result
+  end
+
 end
